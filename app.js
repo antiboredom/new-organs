@@ -7,6 +7,29 @@ function isMobile() {
   return check;
 }
 
+function swapElements(obj1, obj2) {
+  // from https://stackoverflow.com/questions/10716986/swap-2-html-elements-and-preserve-event-listeners-on-them/10717422
+  var parent2 = obj2.parentNode;
+  var next2 = obj2.nextSibling;
+  if (next2 === obj1) {
+    parent2.insertBefore(obj1, obj2);
+  } else {
+    obj1.parentNode.insertBefore(obj2, obj1);
+    if (next2) {
+      parent2.insertBefore(obj1, next2);
+    } else {
+      parent2.appendChild(obj1);
+    }
+  }
+}
+
+function randomCredits() {
+  var credits = document.querySelectorAll('.credit');
+  if (Math.random() > 0.5) {
+    swapElements(credits[0], credits[1]);
+  }
+}
+
 function preload() {
   earImg = loadImage('ear.png');
 }
@@ -92,3 +115,5 @@ ear.prototype.draw = function() {
 
   if (this.w > this.maxW) this.reset();
 }
+
+randomCredits();
