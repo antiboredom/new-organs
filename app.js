@@ -42,11 +42,11 @@ function setup() {
 }
 
 function draw() {
-  // if (mobile) {
+  if (mobile) {
     drawZoomyEars();
-  // } else {
-    // drawEar();
-  // }
+  } else {
+    drawEar();
+  }
 }
 
 function drawZoomyEars() {
