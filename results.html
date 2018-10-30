@@ -1,0 +1,174 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>The New Organs</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Tega Brain">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The New Organs">
+  <meta name="twitter:description" content="Does the Internet know more about you than you think it should?">
+  <meta name="twitter:image" content="https://neworgans.net/sharecard.jpg">
+  <meta property="og:title" content="The New Organs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://neworgans.net" />
+  <meta property="og:image" content="https://neworgans.net/sharecard.jpg">
+  <meta property="og:description" content="Does the Internet know more about you than you think it should?" />
+
+  <link rel="stylesheet" href="style.css?v=1.0">
+  <style>
+    .container {
+      background-color: transparent;
+      margin: 0;
+    }
+
+    #vids {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* grid-template-rows: repeat(3, 1fr); */
+      grid-gap: 15px;
+      grid-auto-rows: repeat(3, 1fr);
+      margin: 15px;
+    }
+
+    .story {
+      width: 100%;
+      height: 100%;
+    }
+
+    .story video {
+      width: 100%;
+    }
+
+    .story:hover {}
+
+
+    .main {
+      grid-row: 1 / 2;
+      grid-column: 1 / 4;
+      /* border: 1px solid #fff; */
+      display: grid;
+      grid-gap: 15px;
+      grid-template-columns: repeat(4, 1fr);
+      /* grid-template-rows: 1; */
+      /* grid-gap: 10px; */
+      /* transform: scale(1.5); */
+      /* box-shadow: 0px 0px 10px #000; */
+      /* max-width: 900px; */
+      /* margin: 30px auto; */
+    }
+
+    .main p {
+      text-align: center;
+    }
+
+    .embed {
+      grid-column: 2/5;
+      /* grid-column-start: 1; */
+      /* grid-column-end: 3; */
+      /* grid-row-start: 1; */
+      /* grid-row-end: 3; */
+      padding: 56.25% 0 0 0;
+      position: relative;
+    }
+
+    .embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #logo {
+      margin: auto;
+      display: block;
+      max-width: 150px;
+    }
+    .about {
+      /* justify-self: center; */
+      /* align-self: center; */
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="vids">
+    <div class="main">
+      <div class="about">
+        <img src="logo.png" id="logo">
+        <p><i>The New Organs</i> is a collection of stories about living under surveillance capitalism, compiled Tega Brain & Sam Lavigne.</p>
+        <img src="down.svg" style="max-width:150px;display:block;margin:auto;">
+      </div>
+      <div class="embed"><iframe src="https://player.vimeo.com/video/274560953?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+    </div>
+  </div>
+  <script src="videos.js"></script>
+  <script>
+    function shuffle(array) {
+      // from https://stackoverflow.com/a/6274398
+      let counter = array.length;
+      while (counter > 0) {
+        let index = Math.floor(Math.random() * counter);
+        counter--;
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+      }
+      return array;
+    }
+
+    function isVisible(el, complete) {
+      //from https://stackoverflow.com/a/22480938
+      let rect = el.getBoundingClientRect();
+      let elemTop = rect.top;
+      let elemBottom = rect.top + el.clientHeight
+      let isVisible;
+
+      if (complete) {
+        // Only completely visible elements return true:
+        isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+      } else {
+        // Partially visible elements return true:
+        isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+      }
+      return isVisible;
+    }
+
+    function onScroll() {
+      for (let i = 0; i < stories.length; i++) {
+        let story = stories[i];
+        let vid = story.getElementsByTagName('video')[0]
+        if (isVisible(story, false)) {
+          if (!vid.getAttribute('src')) {
+            vid.setAttribute('src', vid.dataset.src);
+            // vid.setAttribute('poster', null);
+          }
+          if (vid.paused) vid.play();
+        } else {
+          if (!vid.paused) vid.pause();
+        }
+      }
+    }
+
+    let vidSources = shuffle(getVideos());
+
+    document.getElementById('vids').innerHTML += vidSources.map((v, i) => {
+      return `<div class="story"><video data-src="https://saaaam.s3.amazonaws.com/organs_vids/${v}" muted loop poster="cover.png"></video></div>`;
+    }).join("");
+
+    let stories = Array.from(document.querySelectorAll('.story'));
+
+    setTimeout(() => {
+      onScroll();
+      window.addEventListener('scroll', onScroll);
+    }, 500);
+  </script>
+  <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
+</body>
+
+</html>
