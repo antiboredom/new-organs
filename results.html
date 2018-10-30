@@ -83,14 +83,47 @@
       width: 100%;
       height: 100%;
     }
+
     #logo {
       margin: auto;
       display: block;
       max-width: 150px;
     }
+
     .about {
       /* justify-self: center; */
       /* align-self: center; */
+    }
+
+    #down {
+      max-width: 150px;
+      display: block;
+      margin: auto;
+    }
+
+    @media (max-width: 768px) {
+      #vids {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        grid-template-columns: 100%;
+        grid-gap: 15px;
+        grid-auto-rows: repeat(2, 1fr);
+      }
+      .main {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+        /* border: 1px solid #fff; */
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .embed {
+        grid-column: 1/1;
+      }
+      #down {
+        display: none;
+      }
     }
   </style>
 
@@ -102,7 +135,7 @@
       <div class="about">
         <img src="logo.png" id="logo">
         <p><i>The New Organs</i> is a collection of stories about living under surveillance capitalism, compiled Tega Brain & Sam Lavigne.</p>
-        <img src="down.svg" style="max-width:150px;display:block;margin:auto;">
+        <img id="down" src="down.svg">
       </div>
       <div class="embed"><iframe src="https://player.vimeo.com/video/274560953?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
     </div>
