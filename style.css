@@ -103,3 +103,7 @@ ul.topics li {
 a {
   color: pink;
 }
+
+#p5_loading {
+  display: none !important;
+}
