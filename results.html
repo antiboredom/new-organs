@@ -176,9 +176,10 @@
       for (let i = 0; i < stories.length; i++) {
         let story = stories[i];
         let vid = story.getElementsByTagName('video')[0]
+        let sources = story.getElementsByTagName('source');
         if (isVisible(story, false)) {
-          if (!vid.getAttribute('src')) {
-            vid.setAttribute('src', vid.dataset.src);
+          if (sources.length == 0) {
+            vid.innerHTML = `<source type="video/webm" src="${vid.dataset.src}"><source type="video/mp4" src="${vid.dataset.src.replace('.webm', '')}">`;
           }
           if (vid.paused) vid.play();
         } else {
@@ -190,7 +191,7 @@
     let vidSources = shuffle(getVideos());
 
     document.getElementById('vids').innerHTML += vidSources.map((v, i) => {
-      return `<div class="story"><video data-src="https://saaaam.s3.amazonaws.com/organs_v/${v}" muted loop poster="cover.png"></video></div>`;
+      return `<div class="story"><video data-src="https://saaaam.s3.amazonaws.com/organs_v/${v}" muted loop playsinline poster="cover.png"></video></div>`;
     }).join("");
 
     let stories = Array.from(document.querySelectorAll('.story'));
