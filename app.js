@@ -31,7 +31,7 @@ function randomCredits() {
 }
 
 function preload() {
-  earImg = loadImage('/ear.png');
+  earImg = loadImage('/earbw.png');
 }
 
 function setup() {

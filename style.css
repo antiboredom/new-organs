@@ -10,7 +10,7 @@
 
 body {
   font-family: 'ClearSans', Helvetica Neue, arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   font-weight: lighter;
   background-color: #000;
@@ -28,8 +28,12 @@ canvas {
 
 h1,
 h2,
-h3 {
+h3,h4 {
   margin: 20px 0px;
+}
+
+h4 {
+  font-size: 22px;
 }
 
 hr {
@@ -51,7 +55,7 @@ hr {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgba(20, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 input,
@@ -101,7 +105,7 @@ ul.topics li {
 }
 
 a {
-  color: pink;
+  color: yellow;
 }
 
 #p5_loading {
