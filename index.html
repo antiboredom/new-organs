@@ -20,64 +20,194 @@
   <meta property="og:description" content="Does the Internet know more about you than you think it should?" />
 
   <link rel="stylesheet" href="style.css?v=1.0">
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: auto;
+      height: 100%;
+    }
+
+    #vids {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 15px;
+      grid-auto-rows: repeat(3, 1fr);
+      margin: 15px;
+    }
+
+    .story {
+      width: 100%;
+      height: 100%;
+    }
+
+    .story video {
+      width: 100%;
+    }
+
+    iframe {
+      flex: 1;
+    }
+
+    .main {
+      height: 100vh;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .inner-main {
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 75vw;
+      width: 100vw;
+      max-height: 100vh;
+    }
+
+
+    .about {
+      padding: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .about p {
+      margin: 0px;
+    }
+
+    a {
+      color: yellow;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 20px;
+      margin: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .inner-main {
+        height: 100vw;
+        max-height: 100vh;
+      }
+      #vids {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        grid-template-columns: 100%;
+        grid-gap: 15px;
+        grid-auto-rows: repeat(2, 1fr);
+      }
+      #down {
+        display: none;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
-  <div class="container">
-    <div id="logo"><img src="logo.png" alt="The New Organs"></div>
+  <div class="main"><div class="inner-main">
+    <div class="about">
+      <p>Does the Internet know more about you than you think it should?</p>
+    </div>
+    <iframe src="https://player.vimeo.com/video/301298867?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div class="about">
 
-    <h2 class="question">Does the Internet know more about you than you think it should?</h2>
-
-    <p><em>The New Organs</em> is an independent project commissioned by <a href="http://mozilla.org" target="_blank">Mozilla</a> to investigate how internet companies track and monitor people online and offline.</p>
-
-    <p>We're collecting stories of online surveillance and will be sharing some of our findings later this year. If you've ever had an invasive or creepy experience with online ads, we'd like to hear from you. Fill out the form below, or email us at <a href="mailto:contact@neworgans.net">contact@neworgans.net</a>. </p>
-    <hr>
-
-    <form name="intake" method="post" action="https://docs.google.com/forms/d/e/1FAIpQLSfCtywjaRlL9C_UH4szt-tLH7FvFIw9348koOa8bHzMkm8K8A/formResponse">
       <p>
-        <label>What kinds of experiences have you had?</label>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb1" value="My phone is eavesdropping on me"><label class="cb" for="cb1">My phone is eavesdropping on me</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb2" value="Ads know things about me that I haven't told anyone"><label class="cb" for="cb2">Ads know things about me that I haven't told anyone</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb3" value="The internet knows what I have bought in the real world"><label class="cb" for="cb3">The internet knows what I have bought in the real world</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb4" value="I see ads for services or products related to my physical location"><label class="cb" for="cb4">I see ads for services or products related to my physical location</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb5" value="I see ads for things I was just thinking about"><label class="cb" for="cb5">I see ads for things I was <em>just thinking about</em></label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb6" value="I keep seeing ads the for the same thing on different websites and apps"><label class="cb" for="cb6">I keep seeing ads the for the same thing on different websites and apps</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb7" value="Ads seem to target me based on my race or gender"><label class="cb" for="cb7">Ads seem to target me based on my race or gender</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb8" value="I see ads for things I dream about"><label class="cb" for="cb8">I see ads for things I dream about</label></div>
-        <div class="cb-row"><input type="checkbox" name="entry.171716295" id="cb9" value="Other"><label class="cb" for="cb9">Other</label></div>
+        THE NEW ORGANS is a collection of stories about living under surveillance capitalism.
+        <!-- by <a href="https://lav.io">Sam Lavigne</a> and <a href="http://tegabrain.com">Tega Brain</a>. -->
       </p>
 
       <p>
-        <label for="story">Describe what happened in a sentence or two (optional):</label>
-        <textarea rows="6" name="entry.1976115087" id="story"></textarea>
+        <a href="about.html">Learn more</a> about the project, <a href="submit.html">submit your own story</a>, or view the archive below.
       </p>
-
-      <p>
-        <div class="cb-row">
-          <input type="checkbox" name="entry.1900802290" value="Yes" id="consent">
-          <label for="consent">May we use your story as part of our project?</label>
-        </div>
-      </p>
-
-      <p>
-        <label>Contact info:</label>
-        <input name="entry.1106718885" required type="text" placeholder="name">
-        <input name="emailAddress" required type="email" placeholder="email">
-      </p>
-
-      <input type="submit" name="submit" value="Submit" style="font-weight: bold">
-    </form>
-
-    <p>About: This project is made by <a class="credit" href="http://lav.io" target="_blank">Sam Lavigne</a> and <a class="credit" href="http://tegabrain.com" target="_blank">Tega Brain</a> and is commissioned by <a href="http://mozilla.org" target="_blank">Mozilla</a>. Learn more about the project <a href="about.html">here</a>.
-      <!-- To learn more about it, read the <a href="https://blog.mozilla.org/internetcitizen/2018/06/21/is&#45;your&#45;smartphone&#45;listening&#45;to&#45;you&#45;probably&#45;not&#45;but&#45;we&#45;still&#45;want&#45;to&#45;hear&#45;from&#45;you/" target="_blank">project announcement.</a> -->
-    </p>
-    <p>All contributions here will be confidential, and handled as described in the <a href="https://www.mozilla.org/en-US/privacy/">Mozilla Privacy Policy</a>. We may follow up with individual contributors to hear more about your experiences.</p>
-
+    </div>
+    </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
-  <script src="app.js"></script>
+  <div id="vids"></div>
+
+  <script src="videos.js"></script>
+  <script>
+    function shuffle(array) {
+      // from https://stackoverflow.com/a/6274398
+      let counter = array.length;
+      while (counter > 0) {
+        let index = Math.floor(Math.random() * counter);
+        counter--;
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+      }
+      return array;
+    }
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this,
+          args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    }
+
+    function isVisible(el, complete) {
+      //from https://stackoverflow.com/a/22480938
+      let rect = el.getBoundingClientRect();
+      let elemTop = rect.top;
+      let elemBottom = rect.top + el.clientHeight
+      let isVisible;
+
+      if (complete) {
+        // Only completely visible elements return true:
+        isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+      } else {
+        // Partially visible elements return true:
+        isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+      }
+      return isVisible;
+    }
+
+    var onScroll = debounce(function() {
+      for (let i = 0; i < stories.length; i++) {
+        let story = stories[i];
+        let vid = story.getElementsByTagName('video')[0]
+        let sources = story.getElementsByTagName('source');
+        if (isVisible(story, false)) {
+          if (sources.length == 0) {
+            vid.innerHTML = `<source type="video/webm" src="${vid.dataset.src}"><source type="video/mp4" src="${vid.dataset.src.replace('.webm', '')}">`;
+          }
+          if (vid.paused) vid.play();
+        } else {
+          if (!vid.paused) vid.pause();
+        }
+      }
+    }, 200);
+
+    let vidSources = shuffle(getVideos());
+
+    document.getElementById('vids').innerHTML += vidSources.map((v, i) => {
+      return `<div class="story"><video data-src="https://saaaam.s3.amazonaws.com/organs_v/${v}" muted loop playsinline poster="cover.png"></video></div>`;
+    }).join("");
+
+    let stories = Array.from(document.querySelectorAll('.story'));
+
+    setTimeout(() => {
+      onScroll();
+      window.addEventListener('scroll', onScroll);
+    }, 500);
+  </script>
 </body>
 
 </html>
